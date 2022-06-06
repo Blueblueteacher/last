@@ -93,6 +93,26 @@ var listData = [
 
 var listData = ['제주특별자치도 제주시 첨단로 242', "제주특별자치도 제주시 첨단로 241", "제주특별자치도 제주시 첨단로 240"];
 
+var xObject = {}; // 각 주소에 대한 x 좌표를 담을 객체
+var total = listData.length;
+var counter = 0;
+
+listData.forEach(function (addr) {
+    geocoder.addressSearch(addr, function(data, status) {
+        xObject[addr] = data[0].x;
+        couter++;
+
+        if (total == counter) {
+            doSomething();
+        }
+    })
+});
+
+function doSomething() {
+    console.log(xObject);
+}
+
+/*
 for (var i=0; i < listData.length ; i++) {
     // 주소로 좌표를 검색합니다
     geocoder.addressSearch(listData[i], function(result, status) {
@@ -114,7 +134,7 @@ for (var i=0; i < listData.length ; i++) {
 })
 
 }
-
+*/
 
 /*
 
