@@ -101,19 +101,16 @@ for (var i=0; i < listData.length ; i++) {
      if (status === daum.maps.services.Status.OK) {
         //console.log(result[0].y);
         //console.log(result[0].x);
-        var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-        console.log(coords);
+        coffeePositions[i] = new kakao.maps.LatLng(result[0].y, result[0].x);
+        console.log(coffeePositions[i]);
         // 배열에 넣기
-        coffeePositions[i] = coords;
+       // coffeePositions[i] = coords;
         //coffeePositions.push(coords);
         //console.log(coords);
         
     } 
 })
 }
-
-console.log(carparkPositions.length);
-console.log(carparkPositions[0]);
 
 console.log(coffeePositions.length);
 console.log(coffeePositions[0]);
