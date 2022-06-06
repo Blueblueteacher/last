@@ -55,8 +55,8 @@
 	//	console.log(Object.values(obj_value[0]));
 		
 		var count_h = 0, count_j = 0, count_c = 0, count_m = 0, count_f = 0, count_g = 0;
-		var name = [];
-		var location = [];
+		var nameh = [];
+		var locationh = [];
 		var j_name = [];
 		var j_location = [];
 		var c_name = [];
@@ -144,7 +144,7 @@ var carparkPositions = [
 
 var listData = ['제주특별자치도 제주시 첨단로 242', "제주특별자치도 제주시 첨단로 241", "제주특별자치도 제주시 첨단로 240"];
 
-console.log(location);
+console.log(locationh);
 
 location.forEach(function(addr, index) {
     geocoder.addressSearch(addr, function(result, status) {
