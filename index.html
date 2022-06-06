@@ -76,7 +76,7 @@ var carparkPositions = [
     new kakao.maps.LatLng(37.497680616783086, 127.02518427952202)                       
 ]; 
 
-console.log(typeof(new kakao.maps.LatLng(37.49966168796031, 127.03007039430118)));
+//console.log(typeof(new kakao.maps.LatLng(37.49966168796031, 127.03007039430118)));
 /*
 var listData = [
     {
@@ -93,43 +93,24 @@ var listData = [
 
 var listData = ['제주특별자치도 제주시 첨단로 242', "제주특별자치도 제주시 첨단로 241", "제주특별자치도 제주시 첨단로 240"];
 
-var xObject = {}; // 각 주소에 대한 x 좌표를 담을 객체
-var total = listData.length;
-var counter = 0;
-
-// listData.forEach(function (addr) {
-//     geocoder.addressSearch(addr, function(data, status) {
-//         xObject[addr] = data[0].x;
-//         couter++;
-
-//         if (total == counter) {
-//             doSomething();
-//         }
-//     })
-// });
-
-// function doSomething() {
-//     console.log
-// }
 
 listData.forEach(function(addr, index) {
-    // 주소로 좌표를 검색합니다
     geocoder.addressSearch(addr, function(result, status) {
+        if (status === daum.maps.services.Status.OK) {
+            var coords = new daum.maps.LatLng(result[0].y, result[0].x);
 
-    // 정상적으로 검색이 완료됐으면 
-     if (status === kakao.maps.services.Status.OK) {
-        var coords = new daum.maps.LatLng(result[0].y, result[0].x);
-        // 배열에 넣기
-       // coffeePositions[i] = coords;
-        //coffeePositions.push(coords);
-        //console.log(coords);
-        
-    } 
-    console.log(coffeePositions.length);
-    console.log(coffeePositions[0]);
-})
-
-})
+            var marker = new daum.maps.Marker({
+                map: map,
+                position: coords
+            });
+            var infowindow = new daum.maps.InfoWindow({
+                content: '<div style="width:150px;text-align:center;padding:6px 0;">' + listData[index] + '</div>',
+                disableAutoPan: true
+            });
+            infowindow.open(map, marker);
+        } 
+    });
+});
 
 
 /*
