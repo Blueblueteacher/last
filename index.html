@@ -46,7 +46,7 @@
       fetch(url)
       .then((res) => res.json())
       .then((myJson) => {
-        document.getElementById("data").innerText = JSON.stringify(myJson, null, 1);
+    //    document.getElementById("data").innerText = JSON.stringify(myJson, null, 1);
 	//	console.log(Object.keys(myJson));
 		var obj_key = Object.keys(myJson);
 		var obj_value = myJson['data'];
@@ -174,6 +174,7 @@ var carparkPositions = [
 
 
 var listData = ['제주특별자치도 제주시 첨단로 242', "제주특별자치도 제주시 첨단로 241", "제주특별자치도 제주시 첨단로 240"];
+
 
 
 h_location.forEach(function(addr, index) {
