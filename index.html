@@ -101,6 +101,28 @@
 				count_g++;
 			}
 		}
+        
+        var geocoder = new daum.maps.services.Geocoder();
+
+        console.log(locationh[0]);
+
+location.forEach(function(addr, index) {
+    geocoder.addressSearch(addr, function(result, status) {
+        if (status === daum.maps.services.Status.OK) {
+            var coords = new daum.maps.LatLng(result[0].y, result[0].x);
+
+            var marker = new daum.maps.Marker({
+                map: map,
+                position: coords
+            });
+            var infowindow = new daum.maps.InfoWindow({
+                content: '<div style="width:150px;text-align:center;padding:6px 0;">' + name[index] + '</div>',
+                disableAutoPan: true
+            });
+            infowindow.open(map, marker);
+        } 
+    });
+});
       });
 
 
