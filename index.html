@@ -55,8 +55,8 @@
 	//	console.log(Object.values(obj_value[0]));
 		
 		var count_h = 0, count_j = 0, count_c = 0, count_m = 0, count_f = 0, count_g = 0;
-		var h_name = [];
-		var h_location = [];
+		var name = [];
+		var location = [];
 		var j_name = [];
 		var j_location = [];
 		var c_name = [];
@@ -71,8 +71,8 @@
 		for (var i = 0; i < obj_value.length; i++)
 		{
 			if (obj_value[i].메뉴 == "한식") {
-				h_name[count_h] = obj_value[i].업소명;
-				h_location[count_h] = obj_value[i].소재지;
+				name[count_h] = obj_value[i].업소명;
+				location[count_h] = obj_value[i].소재지;
 				count_h++;
 			}
 			else if (obj_value[i].메뉴 == "일식") {
@@ -144,9 +144,9 @@ var carparkPositions = [
 
 var listData = ['제주특별자치도 제주시 첨단로 242', "제주특별자치도 제주시 첨단로 241", "제주특별자치도 제주시 첨단로 240"];
 
+console.log(location);
 
-
-h_location.forEach(function(addr, index) {
+location.forEach(function(addr, index) {
     geocoder.addressSearch(addr, function(result, status) {
         if (status === daum.maps.services.Status.OK) {
             var coords = new daum.maps.LatLng(result[0].y, result[0].x);
@@ -156,7 +156,7 @@ h_location.forEach(function(addr, index) {
                 position: coords
             });
             var infowindow = new daum.maps.InfoWindow({
-                content: '<div style="width:150px;text-align:center;padding:6px 0;">' + h_name[index] + '</div>',
+                content: '<div style="width:150px;text-align:center;padding:6px 0;">' + name[index] + '</div>',
                 disableAutoPan: true
             });
             infowindow.open(map, marker);
